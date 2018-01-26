@@ -27,10 +27,7 @@ class TestTransactionsOnModel(TestCase):
         hook.body = {'hooked': True }
         hook.meta = {'user-agent': 'pirateOS/0.1'}
         
-        # save
-        hook.save()
-        
         # asserts
         self.assertEquals(hook.current_status, TransactionStatus.AWAITING)
         self.assertEquals(hook.body, {'hooked': True })
-        self.assertEquals(hook.meta, "{'user-agent': 'pirateOS/0.1'}")
+        self.assertEquals(hook.meta, {'user-agent': 'pirateOS/0.1'})

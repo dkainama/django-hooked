@@ -1,13 +1,13 @@
 # -*- coding: utf-8 -*-
 
-from enum import Enum
+from enum import IntEnum
 
-# from django.contrib.postgres.fields import JSONField
 from django.db import models
 from django.utils import timezone
+from jsonfield import JSONField
 
 
-class TransactionStatus(Enum):
+class TransactionStatus(IntEnum):
     AWAITING = 1
     PROGRESS = 2
     PROCESSED = 3
@@ -22,20 +22,19 @@ class WebHookTransaction(models.Model):
     STATUS = TransactionStatus
     
     # request body & meta
-    body = models.TextField()
-    meta = models.TextField()
+    body = JSONField()
+    meta = JSONField()
     
     # status of transaction { TransactionStatus }
-    status = models.IntegerField(choices=STATUS, default=STATUS.AWAITING.value)
+    status = models.IntegerField(choices=STATUS, default=STATUS.AWAITING)
     
     # flags
     modified = models.DateTimeField()
     created = models.DateTimeField(default=timezone.now())
     
-    
     @property
     def current_status(self):
-        TransactionStatus(self.status)
+        return TransactionStatus(self.status)
     
     def __unicode__(self):
         return u'{0}'.format(self.date_event_generated)
