@@ -28,7 +28,7 @@ setup(
     include_package_data=True,
     url='https://github.com/dkainama/django-hooked',
     classifiers=[
-        'Development Status :: 5 - Production/Stable',
+        'Development Status :: 3 - Alpha',
         'Framework :: Django :: 1.8',
         'Framework :: Django :: 1.10',
         'Framework :: Django :: 1.11',
