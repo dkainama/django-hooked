@@ -2,13 +2,13 @@
 
 ### Contribute Hooked
 
-Clone repo and branch of master
+Clone repo and setup new feature/XXX branch
 
 Now choose dev environment, if virtualenvwrapper is installed:
 
-      make setup2 NAME=hook # for python 2.7
+      make setup2 NAME=hook # for python 2.X
      
-      make setup3 NAME=hook # for python 3.6
+      make setup3 NAME=hook # for python 3.X
       
 Now init
 
