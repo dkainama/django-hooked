@@ -1,3 +1,9 @@
+setup2:
+	mkvirtualenv -a $(pwd) --python=$(python) $(NAME)
+
+setup3:
+	mkvirtualenv -a $(pwd) --python=$(python3) $(NAME)
+
 init:
 	pipenv install --dev
 	pipenv run pip install -e .
