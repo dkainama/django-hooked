@@ -7,10 +7,11 @@ name = "pypi"
 
 [packages]
 
-Django = "*"
+django = "*"
 djangorestframework = "*"
 "enum34" = "*"
 jsonfield = "*"
+
 
 
 [dev-packages]
@@ -24,5 +25,4 @@ pytest-django = "*"
 pytest-pythonpath = "*"
 twine = "*"
 wheel = "*"
-Sphinx = "*"
-sphinx_rtd_theme = "*"
+pdoc = "*"

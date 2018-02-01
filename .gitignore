@@ -4,6 +4,9 @@
 # pycharm files
 .idea/
 
+# artifacts from pytest
+.pytest_cache/
+
 # Distribution
 build/
 dist/
