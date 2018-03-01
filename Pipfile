@@ -13,7 +13,6 @@ djangorestframework = "*"
 jsonfield = "*"
 
 
-
 [dev-packages]
 
 ipython = "*"
@@ -26,3 +25,4 @@ pytest-pythonpath = "*"
 twine = "*"
 wheel = "*"
 pdoc = "*"
+factory-boy = "*"

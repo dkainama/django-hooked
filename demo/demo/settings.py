@@ -22,6 +22,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = '#fd3bqcbk!$)#0po@84amhkp0jl(wc9gca#k9#d4tvxjq_ee=m'
 
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
@@ -37,6 +38,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'hooked',  #package
+    'hooks'  # test app
+    
+    
 ]
 
 MIDDLEWARE = [

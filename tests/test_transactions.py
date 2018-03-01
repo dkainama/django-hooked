@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
+from unittest import skip
 
 from django.test import TestCase
 
-from hooked.transactions import TransactionStatus, WebHookTransaction
+from hooked.models import TransactionStatus, WebHookTransaction
 
 
 class TestTransactionsOnModel(TestCase):
@@ -19,15 +20,15 @@ class TestTransactionsOnModel(TestCase):
         # asserts
         self.assertEquals(hook.current_status, TransactionStatus.AWAITING)
 
-
+    
     def test_body_and_meta_transaction_hook(self):
         # setup hook
         hook = WebHookTransaction()
         # set request data
         hook.body = {'hooked': True }
-        hook.meta = {'user-agent': 'pirateOS/0.1'}
+        hook.meta = {'user-agent': 'pirateOS/1.0'}
         
         # asserts
         self.assertEquals(hook.current_status, TransactionStatus.AWAITING)
         self.assertEquals(hook.body, {'hooked': True })
-        self.assertEquals(hook.meta, {'user-agent': 'pirateOS/0.1'})
+        self.assertEquals(hook.meta, {'user-agent': 'pirateOS/1.0'})
