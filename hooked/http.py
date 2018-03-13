@@ -9,9 +9,7 @@ class HookedRequest:
         self.request = request
     
     def is_token_valid(self, secret):            
-        return validate_token(
-            secret, str(self.body, "utf-8"), self.token
-        )
+        return validate_token(secret, str(self.body), self.token)
     
     @property
     def body(self):
