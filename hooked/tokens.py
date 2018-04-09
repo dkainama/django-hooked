@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 import base64
 import hmac
 import os
@@ -11,9 +13,18 @@ def generate_random_secret():
 
 
 def generate_token(key, msg):
-    key = str(key)
-    decoded = base64.standard_b64decode(msg)
-    token = hmac.new(force_bytes(key), msg=decoded, digestmod=sha256)
+    
+    # check for encode methods => base64 body results in serious 
+    # problems when double encoding back from PHP.
+    key = str(key.decode('utf8'))
+    decoded = str(msg.decode('utf8'))
+    
+    token = hmac.new(force_bytes(key), digestmod=sha256)
+    token.update(decoded)  # explicit update
+    
+    print('generate_token:msg:decoded', decoded)
+    print('generate_token:before', token.hexdigest())
+    
     return token.hexdigest()
 
 

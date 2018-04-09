@@ -18,10 +18,10 @@ from .factories.views import WebHookViewFactory
 
 class TestReceiversMiddelware(TestCase):
     def setUp(self):
-        self.payload = base64.urlsafe_b64encode(b'some_data')
+        self.payload = str('some_data')
         self.app = WebHookClientApp.objects.create(
             name='Pirate', identifier=uuid.uuid4(), 
-            secret='pirate', need_authorization=True
+            secret="pirate", need_authorization=True
         )
     
     # returns 401 if X_HOOKED_TOKEN is missing
@@ -41,7 +41,7 @@ class TestReceiversMiddelware(TestCase):
     
     # everything is OK, return 200
     def test_valid_authorized_request_transaction_hook_and_return_201(self):
-        token = generate_token('pirate', self.payload)
+        token = generate_token(self.app.secret, self.payload)
         
         request = WebHookRequestFactory(
             token=token, app_id=self.app.identifier

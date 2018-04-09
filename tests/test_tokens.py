@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-import base64
 from unittest import skip
 
 from django.test import TestCase
@@ -12,7 +11,7 @@ class TestHmacTokens(TestCase):
     
     def setUp(self):
         self.secret = 'XXX'
-        self.payload = base64.urlsafe_b64encode(b'payload')
+        self.payload = str('payload')
 
     def test_generate_valid_token(self):
         token = generate_token(self.secret, self.payload)
@@ -21,8 +20,8 @@ class TestHmacTokens(TestCase):
         self.assertTrue(valid);
 
     def test_generate_invalid_token_wrong_payload(self):
-        payload1 = base64.urlsafe_b64encode(b'payload')
-        payload2 = base64.urlsafe_b64encode(b'payload-modified-during-request')
+        payload1 = str('payload')
+        payload2 = str('payload-modified-during-request')
         
         token = generate_token(self.secret, payload2)
         valid = validate_token(self.secret, payload1, token)
