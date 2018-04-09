@@ -1,8 +1,8 @@
 setup2:
-	mkvirtualenv -a $(pwd) --python=$(python) $(NAME)
+	mkvirtualenv -a $(pwd) --python=$(which python2) $(NAME)
 
 setup3:
-	mkvirtualenv -a $(pwd) --python=$(python3) $(NAME)
+	mkvirtualenv -a $(pwd) --python=$(which python3) $(NAME)
 
 init:
 	pipenv install --dev

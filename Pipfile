@@ -1,20 +1,15 @@
 [[source]]
-
 url = "https://pypi.python.org/simple"
 verify_ssl = true
 name = "pypi"
 
-
 [packages]
-
-django = "*"
 djangorestframework = "*"
 "enum34" = "*"
 jsonfield = "*"
-
+django = "==1.*"
 
 [dev-packages]
-
 ipython = "*"
 ipdb = "*"
 pytest = "*"
