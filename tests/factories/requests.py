@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 from django.contrib.auth.models import AnonymousUser
 from django.test import RequestFactory
+from rest_framework.test import APIRequestFactory  # stub with DRF
 
 from hooked.http import HookedRequest
-from rest_framework.test import APIRequestFactory  # stub with DRF
 
 
 class WebHookRequestFactory(APIRequestFactory):
