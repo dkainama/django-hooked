@@ -25,6 +25,9 @@ rdb:
 
 clean:
 	find . -name '*.pyc' -delete
+	
+publish:
+	python setup.py sdist upload -r pypi
 
 test:
 	pipenv run py.test --ds=tests.settings --capture=no --cov-report term-missing --cov-report html --cov=hooked tests
