@@ -1,6 +1,9 @@
 # database files
 *.sqlite3
 
+# test files
+example.curl
+
 # pycharm files
 .idea/
 
