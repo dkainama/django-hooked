@@ -25,4 +25,12 @@ def generate_token(key, msg):
 def validate_token(key, msg, token):
     key = str(key)
     sig = generate_token(key=key, msg=msg)
-    return hmac.compare_digest(force_bytes(sig), force_bytes(token))
+    
+    # fix for older versions
+    if hasattr(hmac, "compare_digest"):
+        compare_digest = hmac.compare_digest
+    else:
+        def compare_digest(s1, s2):
+            return s1 == s2
+
+    return compare_digest(force_bytes(sig), force_bytes(token))
