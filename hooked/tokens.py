@@ -2,7 +2,6 @@
 
 import base64
 import hmac
-import json
 import os
 from hashlib import sha256
 
@@ -14,9 +13,6 @@ def generate_random_secret():
 
 
 def generate_token(key, msg):
-    
-    # check for encode methods => base64 body results in serious 
-    # problems when double encoding back from PHP.
     key = str(key.decode('utf-8'))
     token = hmac.new(force_bytes(key), digestmod=sha256)
     token.update(str(msg))  # explicit update
