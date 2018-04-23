@@ -2,6 +2,7 @@
 
 import base64
 import hmac
+import json
 import os
 from hashlib import sha256
 
@@ -16,16 +17,10 @@ def generate_token(key, msg):
     
     # check for encode methods => base64 body results in serious 
     # problems when double encoding back from PHP.
-    key = str(key.decode('utf8'))
-    decoded = str(msg.decode('utf8'))
-    
+    key = str(key.decode('utf-8'))
     token = hmac.new(force_bytes(key), digestmod=sha256)
-    token.update(decoded)  # explicit update
-    
-    print('generate_token:msg:decoded', decoded)
-    print('generate_token:before', token.hexdigest())
-    
-    return token.hexdigest()
+    token.update(str(msg))  # explicit update
+    return base64.b64encode(token.hexdigest())
 
 
 def validate_token(key, msg, token):

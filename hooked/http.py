@@ -1,4 +1,7 @@
 # -*- coding: utf-8 -*-
+
+import json
+
 from django.http import JsonResponse
 
 from .tokens import validate_token
@@ -8,8 +11,9 @@ class HookedRequest:
     def __init__(self, request):
         self.request = request
     
-    def is_token_valid(self, secret):            
-        return validate_token(secret, str(self.body), self.token)
+    def is_token_valid(self, secret):
+        decoded = json.loads(self.body.decode('utf-8'))        
+        return validate_token(secret, decoded, self.token)
     
     @property
     def body(self):
