@@ -17,7 +17,7 @@ def get_packages(package):
 
 setup(
     name='django-hooked',
-    version='0.1.3',
+    version='0.1.4',
     packages=get_packages('hooked'),
     license='MIT',
     author='Donald Kainama',
