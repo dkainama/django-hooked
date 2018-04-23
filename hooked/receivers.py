@@ -32,7 +32,8 @@ class WebHookReceiverMixin(object):
             if app.need_authorization:
                 if not hooked_request.token:
                     return HookedReponse.NotAuthorized        
-            
+                
+                print(app.secret)
                 is_valid = hooked_request.is_token_valid(app.secret)
                 
                 # now check valid token and get from app <=> 403

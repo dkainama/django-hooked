@@ -16,16 +16,16 @@ def generate_random_secret():
 def generate_token(key, msg):
     
     key = str(key.decode('utf-8'))
-    match = sha1(msg).hexdigest()
-    token = hmac.new(force_bytes(key), match, digestmod=sha256).digest()
+    match = sha1(msg.encode('utf-8')).hexdigest()
+    token = hmac.new(force_bytes(key), match.encode(), digestmod=sha256).digest()
     
     return base64.b64encode(token).decode()
 
 
 def validate_token(key, msg, token):
     key = str(key)
-    sig = generate_token(key=key, msg=msg)
-    
+    sig = generate_token(key, msg)
+
     # fix for older versions
     if hasattr(hmac, "compare_digest"):
         compare_digest = hmac.compare_digest

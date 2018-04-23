@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import json
+from collections import OrderedDict
 
 from django.http import JsonResponse
 
@@ -11,8 +12,9 @@ class HookedRequest:
     def __init__(self, request):
         self.request = request
     
-    def is_token_valid(self, secret):      
-        return validate_token(secret, self.body, self.token)
+    def is_token_valid(self, secret):  
+        cleaned = json.dumps(json.load(self.request._stream, object_pairs_hook=OrderedDict), separators=(',', ':'), sort_keys=False)
+        return validate_token(secret, cleaned, self.token)
     
     @property
     def body(self):
