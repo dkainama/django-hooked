@@ -2,8 +2,9 @@
 
 import base64
 import hmac
+import json
 import os
-from hashlib import sha256
+from hashlib import sha1, sha256
 
 from django.utils.encoding import force_bytes
 
@@ -13,8 +14,11 @@ def generate_random_secret():
 
 
 def generate_token(key, msg):
+    
     key = str(key.decode('utf-8'))
-    token = hmac.new(force_bytes(key), str(msg), digestmod=sha256).digest()
+    match = sha1(msg).hexdigest()
+    token = hmac.new(force_bytes(key), match, digestmod=sha256).digest()
+    
     return base64.b64encode(token).decode()
 
 
