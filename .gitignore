@@ -1,6 +1,9 @@
 # database files
 *.sqlite3
 
+# temp,
+clients/
+
 # test files
 example.curl
 
