@@ -14,7 +14,6 @@ def generate_random_secret():
 
 
 def generate_token(key, msg):
-    
     key = str(key.decode('utf-8'))
     match = sha1(msg.encode('utf-8')).hexdigest()
     token = hmac.new(force_bytes(key), match.encode(), digestmod=sha256).digest()

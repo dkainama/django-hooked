@@ -13,12 +13,11 @@ class HookedRequest:
         self.request = request
     
     def is_token_valid(self, secret):  
-        cleaned = json.dumps(json.load(self.request._stream, object_pairs_hook=OrderedDict), separators=(',', ':'), sort_keys=False)
-        return validate_token(secret, cleaned, self.token)
+        return validate_token(secret, self.body, self.token)
     
     @property
     def body(self):
-        return self.request.body
+        return json.dumps(json.loads(self.request.body, object_pairs_hook=OrderedDict), separators=(',', ':'), sort_keys=False)
         
     @property
     def headers(self):

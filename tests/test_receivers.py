@@ -18,7 +18,7 @@ from .factories.views import WebHookViewFactory
 
 class TestReceiversMiddelware(TestCase):
     def setUp(self):
-        self.payload = str('"some_data"')
+        self.payload = str('{"foo": 1}')
         self.app = WebHookClientApp.objects.create(
             name='Pirate', identifier=uuid.uuid4(), 
             secret="pirate", need_authorization=True

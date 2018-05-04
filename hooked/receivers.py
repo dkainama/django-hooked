@@ -1,4 +1,6 @@
 # -*- coding: utf-8 -*-
+import json
+
 from django.views.decorators.csrf import csrf_exempt
 
 from .http import HookedReponse, HookedRequest
@@ -33,16 +35,14 @@ class WebHookReceiverMixin(object):
                 if not hooked_request.token:
                     return HookedReponse.NotAuthorized        
                 
-                print(app.secret)
                 is_valid = hooked_request.is_token_valid(app.secret)
-                
                 # now check valid token and get from app <=> 403
                 if not is_valid:
                     return HookedReponse.Forbidden
             
             # convert body from bytes to str compatible
-            body = request.body.decode('utf-8')
-            headers = {}  # TODO filter only X_HTTP (h.req)
+            body = hooked_request.body
+            headers = {}  # FIXME filter  X-HTTP headers only#
             
             # get event and run transaction
             event = hooked_request.event
