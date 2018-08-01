@@ -55,24 +55,18 @@ __Example:__
 Usage
 =====
 
-### Curl request voor webhook <span style="text-decoration:underline;">met</span> authenticatie
+### Curl request for webhook <span style="text-decoration:underline;">with</span> authentication
 
+    curl \
+        -X POST \
+        -d '{ data: { id: 1 }, hooked: { event: 'ADDED' }}' \
+        -H "Content-Type: application/json" \
+        -H "X-HOOKED-APP-ID: APP_UUID" \
+        -H "X-HOOKED-TOKEN:  HMAC_TOKEN" \
+        -H "X-HOOKED-EVENT:  EVENT" \ 
+        "https://example.com/myapp/webhooks/"
 
-```
-
-curl \
-    -X POST \
-    -d '{ data: { id: 1 }, hooked: { event: 'ADDED' }}' \
-    -H "Content-Type: application/json" \
-    -H "X-HOOKED-APP-ID: APP_UUID" \
-    -H "X-HOOKED-TOKEN:  HMAC_TOKEN" \
-    -H "X-HOOKED-EVENT:  EVENT" \ 
-    "https://edge.jouwomgeving.nl/thirdparty/vragenlijsten/webhooks/"
-
-```
-
-
-**Indien validatie actief is: **verwachten we onderstaande headers in het POST request om deze te valideren:
+> If authorisation is granted: **we expect the following headers in the POST request for validation:
 
 
 <table>
@@ -83,35 +77,28 @@ curl \
   <tr>
    <td>X-HOOKED-APP-ID
    </td>
-   <td>verplicht
+   <td>Required
    </td>
-   <td>unieke identifier van de app
+   <td>unique identifier for client / app
    </td>
   </tr>
   <tr>
    <td>X-HOOKED-TOKEN
    </td>
-   <td>Verplicht<em> (indien endpoint ook beveiligd is)</em>
+   <td>Required<em> (if endpoint is secured)</em>
    </td>
-   <td>token op basis van HMAC(256) => request body + shared secret (deze wordt of is al aangeleverd op aanvraag)
+   <td>HMAC token derived HMAC(256) => request body + shared_secret
    </td>
   </tr>
   <tr>
    <td>X-HOOKED-EVENT
    </td>
-   <td>verplicht
+   <td>Required
    </td>
-   <td>om de request te benoemen, bijv: delete, create, test, enz.
+   <td>to identify a request, ex: delete, create, test, enz .
    </td>
   </tr>
 </table>
-
-
-	- 
-
-
-### 
-
 
 
 ### Is it any good?
