@@ -24,8 +24,6 @@ Run tests
 
 #### HMAC & payload
 
-[] Write more about HMAC tokens {Ruby, PHP, JS}
-
 The hash consists of the following parts:
 
      B64(HMAC(SHA256,SHA1(PAYLOAD),SHARED_SECRET));
@@ -36,6 +34,8 @@ The hash consists of the following parts:
 
 
 #### Clients
+
+> Write more about HMAC tokens {Ruby, ~~PHP~~, JS}
 
 ###### PHP
 
