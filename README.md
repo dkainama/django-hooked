@@ -51,6 +51,69 @@ __Example:__
     php > $match = sha1($data);
     php > echo base64_encode(hash_hmac("sha256", $match, "white-stripes muse M89 killers prides", true));
 
+
+Usage
+=====
+
+### Curl request voor webhook <span style="text-decoration:underline;">met</span> authenticatie
+
+
+```
+
+curl \
+    -X POST \
+    -d '{ data: { id: 1 }, hooked: { event: 'ADDED' }}' \
+    -H "Content-Type: application/json" \
+    -H "X-HOOKED-APP-ID: APP_UUID" \
+    -H "X-HOOKED-TOKEN:  HMAC_TOKEN" \
+    -H "X-HOOKED-EVENT:  EVENT" \ 
+    "https://edge.jouwomgeving.nl/thirdparty/vragenlijsten/webhooks/"
+
+```
+
+
+**Indien validatie actief is: **verwachten we onderstaande headers in het POST request om deze te valideren:
+
+
+<table>
+  <tr>
+   <td colspan="3" >
+   </td>
+  </tr>
+  <tr>
+   <td>X-HOOKED-APP-ID
+   </td>
+   <td>verplicht
+   </td>
+   <td>unieke identifier van de app
+   </td>
+  </tr>
+  <tr>
+   <td>X-HOOKED-TOKEN
+   </td>
+   <td>Verplicht<em> (indien endpoint ook beveiligd is)</em>
+   </td>
+   <td>token op basis van HMAC(256) => request body + shared secret (deze wordt of is al aangeleverd op aanvraag)
+   </td>
+  </tr>
+  <tr>
+   <td>X-HOOKED-EVENT
+   </td>
+   <td>verplicht
+   </td>
+   <td>om de request te benoemen, bijv: delete, create, test, enz.
+   </td>
+  </tr>
+</table>
+
+
+	- 
+
+
+### 
+
+
+
 ### Is it any good?
 
 [Yes.](http://news.ycombinator.com/item?id=3067434)
