@@ -66,7 +66,7 @@ Usage
         -H "X-HOOKED-EVENT:  EVENT" \ 
         "https://example.com/myapp/webhooks/"
 
-> If authorisation is granted: **we expect the following headers in the POST request for validation:
+> If authentication is required: we expect the following headers in the POST request for validation:
 
 
 <table>
@@ -77,7 +77,7 @@ Usage
   <tr>
    <td>X-HOOKED-APP-ID
    </td>
-   <td>Required
+   <td>required
    </td>
    <td>unique identifier for client / app
    </td>
@@ -85,7 +85,7 @@ Usage
   <tr>
    <td>X-HOOKED-TOKEN
    </td>
-   <td>Required<em> (if endpoint is secured)</em>
+   <td>required<em> (if endpoint is secured)</em>
    </td>
    <td>HMAC token derived HMAC(256) => request body + shared_secret
    </td>
@@ -93,7 +93,7 @@ Usage
   <tr>
    <td>X-HOOKED-EVENT
    </td>
-   <td>Required
+   <td>required
    </td>
    <td>to identify a request, ex: delete, create, test, enz .
    </td>
