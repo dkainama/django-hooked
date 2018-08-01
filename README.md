@@ -41,7 +41,7 @@ The hash consists of the following parts:
 
 __Function:__
 
-    string base64_encode(hash_hmac(“sha256” , sha1(“{}”), false));
+    string base64_encode(hash_hmac(“sha256” , sha1(“{}”), false), "white stripe muse night m89 killers prides");
 
 __Example:__
     
