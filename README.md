@@ -41,7 +41,7 @@ The hash consists of the following parts:
 
 __Function:__
 
-    string base64_encode(hash_hmac(“sha256” , sha1(“{}”), false), "white stripe muse m89 killers prides");
+    string base64_encode(hash_hmac(“sha256” , sha1(“{}”), false), "SECRET");
 
 __Example:__
     
@@ -49,7 +49,7 @@ __Example:__
     php > $payload = “{ … }”
     php > $data = json_encode(json_decode($payload), JSON_UNESCAPED_SLASHES);
     php > $match = sha1($data);
-    php > echo base64_encode(hash_hmac("sha256", $match, "example1234", true));
+    php > echo base64_encode(hash_hmac("sha256", $match, "white-stripes muse M89 killers prides", true));
 
 ### Is it any good?
 
