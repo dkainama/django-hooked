@@ -29,8 +29,8 @@ The hash consists of the following parts:
      B64(HMAC(SHA256,SHA1(PAYLOAD),SHARED_SECRET));
 
 
-* __PAYLOAD__ is a SHA1 of the JSON (stringified).
-* __SHARED_SECRET__ is generated when creating a new HookedApp
+* __PAYLOAD:__ is a SHA1 of the JSON (stringified).
+* __SHARED_SECRET:__ is generated when creating a new HookedApp
 
 
 #### Clients
