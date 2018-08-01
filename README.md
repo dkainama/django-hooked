@@ -37,7 +37,7 @@ The hash consists of the following parts:
 
 > Write more about HMAC tokens {Ruby, ~~PHP~~, JS}
 
-###### PHP
+##### PHP
 
 __Function:__
 
