@@ -8,6 +8,9 @@ djangorestframework = "*"
 "enum34" = "*"
 jsonfield = "*"
 django = "==1.*"
+coverage = "*"
+pluggy = "*"
+pytest-metadata = "*"
 
 [dev-packages]
 ipython = "*"
