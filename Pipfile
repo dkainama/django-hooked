@@ -11,6 +11,7 @@ django = "==1.*"
 coverage = "*"
 pluggy = "*"
 pytest-metadata = "*"
+urllib3 = "*"
 
 [dev-packages]
 ipython = "*"
