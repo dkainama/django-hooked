@@ -10,14 +10,15 @@ with open('README.md', 'r') as f:
 
 def get_packages(package):
     return [
-        dirpath for dirpath, dirnames, filenames in os.walk(package)
+        dirpath
+        for dirpath, dirnames, filenames in os.walk(package)
         if os.path.exists(os.path.join(dirpath, '__init__.py'))
     ]
 
 
 setup(
     name='django-hooked',
-    version='0.1.7',
+    version='0.2.0',
     packages=get_packages('hooked'),
     license='MIT',
     author='Donald Kainama',
@@ -41,5 +42,5 @@ setup(
         'Programming Language :: Python :: 3.4',
         'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6',
-    ]
+    ],
 )
