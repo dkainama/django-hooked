@@ -4,9 +4,6 @@ import os
 
 from setuptools import setup
 
-with open('README.rst', 'r') as f:
-    readme = f.read()
-
 
 def get_packages(package):
     return [
@@ -18,13 +15,13 @@ def get_packages(package):
 
 setup(
     name='django-hooked',
-    version='0.2.0',
+    version='0.2.1',
     packages=get_packages('hooked'),
     license='MIT',
     author='Donald Kainama',
     description='WebHooks for Django and Django Rest Framework.',
     author_email='dkainama@jouwomgeving.nl',
-    long_description=readme,
+    long_description='Receive signed and secure webhooks in Django',
     install_requires=[],
     include_package_data=True,
     url='https://github.com/dkainama/django-hooked',

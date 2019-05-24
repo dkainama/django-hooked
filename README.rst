@@ -1,1 +1,0 @@
-Receive signed and secure webhooks in Django
