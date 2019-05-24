@@ -8,27 +8,27 @@ from hooked.models import TransactionStatus, WebHookTransaction
 
 class TestTransactionsOnModel(TestCase):
     def test_check_transaction_enum_status(self):
-        self.assertEquals(WebHookTransaction.STATUS.AWAITING, TransactionStatus.AWAITING)
-        self.assertEquals(WebHookTransaction.STATUS.PROGRESS, TransactionStatus.PROGRESS)
-        self.assertEquals(WebHookTransaction.STATUS.PROCESSED, TransactionStatus.PROCESSED)
-        self.assertEquals(WebHookTransaction.STATUS.FAILED, TransactionStatus.FAILED)
-        
-        
+        self.assertEqual(WebHookTransaction.STATUS.AWAITING, TransactionStatus.AWAITING)
+        self.assertEqual(WebHookTransaction.STATUS.PROGRESS, TransactionStatus.PROGRESS)
+        self.assertEqual(
+            WebHookTransaction.STATUS.PROCESSED, TransactionStatus.PROCESSED
+        )
+        self.assertEqual(WebHookTransaction.STATUS.FAILED, TransactionStatus.FAILED)
+
     def test_init_transaction_hook(self):
         # setup hook
         hook = WebHookTransaction()
         # asserts
-        self.assertEquals(hook.current_status, TransactionStatus.AWAITING)
+        self.assertEqual(hook.current_status, TransactionStatus.AWAITING)
 
-    
     def test_body_and_meta_transaction_hook(self):
         # setup hook
         hook = WebHookTransaction()
         # set request data
-        hook.body = {'hooked': True }
+        hook.body = {'hooked': True}
         hook.meta = {'user-agent': 'pirateOS/1.0'}
-        
+
         # asserts
-        self.assertEquals(hook.current_status, TransactionStatus.AWAITING)
-        self.assertEquals(hook.body, {'hooked': True })
-        self.assertEquals(hook.meta, {'user-agent': 'pirateOS/1.0'})
+        self.assertEqual(hook.current_status, TransactionStatus.AWAITING)
+        self.assertEqual(hook.body, {'hooked': True})
+        self.assertEqual(hook.meta, {'user-agent': 'pirateOS/1.0'})
